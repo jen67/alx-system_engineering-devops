@@ -1,1 +1,1 @@
- a script that reveals its input
+ displays all the lines in tje file
