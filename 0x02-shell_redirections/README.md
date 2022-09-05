@@ -1,1 +1,1 @@
-a shell script that creates a file named exactly \*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
+Display the number of lines that contain the pattern “bin” in the file /etc/passwd
