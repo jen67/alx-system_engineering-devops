@@ -1,1 +1,1 @@
-Display all the lines in the file /etc/passwd that do not contain the pattern “bin”.
+a shell script that creates a file named exactly \*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
