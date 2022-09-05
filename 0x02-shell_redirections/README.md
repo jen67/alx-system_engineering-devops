@@ -1,5 +1,1 @@
-a script that displays all users and their home directories, sorted by users.
-
-
-
-Based on the the /etc/passwd file
+Display all the lines in the file /etc/passwd that do not contain the pattern “bin”.
