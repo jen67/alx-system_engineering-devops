@@ -1,17 +1,11 @@
-a script that lists all the files with a .gif extension in the current directory and all its sub-directories.
+An acrostic is a poem (or other form of writing) in which the first letter (or syllable, or word) of each line (or paragraph, or other recurring feature in the text) spells out a word, message or the alphabet. The word comes from the French acrostiche from post-classical Latin acrostichis). As a form of constrained writing, an acrostic can be used as a mnemonic device to aid memory retrieval. Read more.
 
 
 
-Hidden files should be listed
+Create a script that decodes acrostics that use the first letter of each line.
 
-Only regular files (not directories) should be listed
 
-The names of the files should be displayed without their extensions
 
-The files should be sorted by byte values, but case-insensitive (file aaa should be listed before file bbb, file .b should be listed before file a, and file Rona should be listed after file jay)
+The ‘decoded’ message has to end with a new line
 
-One file name per line
-
-The listing should end with a new line
-
-You are not allowed to use basename, grep, egrep, fgrep or rgrep
+You are not allowed to use grep, egrep, fgrep or rgrep
