@@ -1,7 +1,7 @@
- script that counts the number of directories and sub-directories in the current directory.
+ a script that parses web servers logs in TSV format as input and displays the 11 hosts or IP addresses which did the most requests.
 
 
 
-The current and parent directories should not be taken into account
+Order by number of requests, most active host or IP at the top
 
-Hidden directories should be counted
+You are not allowed to use grep, egrep, fgrep or rgrep
