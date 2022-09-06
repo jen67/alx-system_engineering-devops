@@ -1,4 +1,4 @@
- a script that creates a new local variable.
+reate a script that creates a new global variable.
 
 
 
