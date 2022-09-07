@@ -1,2 +1,2 @@
 #!/bin/bash
-ls-1 | cat -n | cat -T | grep [1,3,5,7]^l|cut -b 9-
+paste--|cut-d$'\t'-f1
