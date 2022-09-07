@@ -1,9 +1,13 @@
- a shell script that adds the two numbers stored in the environment variables WATER and STIR and prints the result.
+a script that prints all possible combinations of two letters, except oo.
 
 
 
-WATER is in base water
+Letters are lower cases, from a to z
 
-STIR is in base stir.
+One combination per line
 
-The result should be in base bestchol
+The output should be alpha ordered, starting with aa
+
+Do not print oo
+
+Your script file should contain maximum 64 characters
