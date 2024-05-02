@@ -1,0 +1,11 @@
+# Hello World Program in Bash Shell
+
+counter=1
+
+while [ $counter -le 10 ]; do
+    echo "Best School"
+    # Increment the counter
+    ((counter++))
+done
+
+exit 0
