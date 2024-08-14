@@ -1,33 +1,33 @@
-# Postmortem: Web Server Outage
+# Postmortem: SSH Key Authentication Failure on Ubuntu Web Terminal
 
 ## Issue Summary
-- **Duration of Outage:** August 14, 2024, 10:00 AM - 12:30 PM (UTC)
-- **Impact:** The web server responsible for delivering the company’s primary website was down for 2.5 hours. During this time, 80% of users experienced either complete downtime or significant slowdowns when trying to access the site. The outage impacted e-commerce transactions, leading to an estimated revenue loss of $15,000.
-- **Root Cause:** A configuration error in the Nginx load balancer caused a failure in routing traffic to the web server, which was exacerbated by a spike in traffic during a promotional event.
+- **Duration of Outage:** August 14, 2024, 2:30 PM - 4:00 PM (UTC)
+- **Impact:** During this period, I was unable to access the Ubuntu web terminal via SSH due to key authentication failures. This prevented me from managing server configurations and deploying updates, impacting my workflow and causing a delay in project development.
+- **Root Cause:** The SSH key used for authentication was not properly recognized due to a permissions issue on the server and a mismatch between the key's format on the local machine and what the server expected.
 
 ## Timeline
-- **10:00 AM:** The issue was first detected by an automated monitoring alert that reported a significant drop in website response time.
-- **10:05 AM:** The on-call engineer received the alert and began investigating the web server's logs, initially suspecting a high load due to the ongoing promotion.
-- **10:20 AM:** The engineer assumed a traffic spike issue and scaled up the web server instances, but the issue persisted.
-- **10:35 AM:** Further investigation revealed that while server instances were healthy, they were not receiving any traffic.
-- **10:50 AM:** The network team was escalated to investigate potential issues with the load balancer.
-- **11:15 AM:** A configuration error in the Nginx load balancer was discovered; it was incorrectly routing all traffic to a single, non-functional server.
-- **11:45 AM:** The load balancer configuration was corrected, and traffic began routing properly across all web server instances.
-- **12:30 PM:** Full service was restored, and normal operation resumed.
+- **2:30 PM:** The issue was first detected when I received an "Access Denied" error while attempting to SSH into the Ubuntu server. The error message indicated that the public key was not accepted.
+- **2:35 PM:** I initially suspected a network issue or a problem with the server's SSH daemon and restarted my SSH client and terminal.
+- **2:45 PM:** After restarting the SSH client and verifying the network connection, I realized that the problem persisted. I checked the local SSH configuration and found that the private key file had incorrect permissions.
+- **3:00 PM:** I attempted to regenerate the SSH key pair and replace the old key on the server. The key was successfully added to the server's `~/.ssh/authorized_keys` file, but I continued to face authentication issues.
+- **3:15 PM:** It was discovered that the SSH key format on the local machine was different from what the server was configured to accept. I adjusted the key format to match the server's requirements.
+- **3:30 PM:** After correcting the key permissions and ensuring the key format was compatible, I was able to successfully authenticate and access the server.
+- **4:00 PM:** Full access was restored, and normal operations resumed.
 
 ## Root Cause and Resolution
-- **Root Cause:** The root cause was traced to a misconfiguration in the Nginx load balancer. A recent change intended to optimize traffic routing was not properly tested and caused all incoming traffic to be directed to a single server instance that was not properly configured to handle it. This issue was compounded by the timing of the problem, coinciding with a scheduled promotional event that significantly increased web traffic.
-- **Resolution:** The issue was resolved by reverting the Nginx configuration to the last known good state and thoroughly testing the configuration before applying it to the production environment. Additionally, the load balancer was reconfigured to ensure even distribution of traffic across all available servers.
+- **Root Cause:** The SSH key authentication failure was due to a permissions issue with the private key file on my local machine and a format mismatch between the key generated on my local machine and the key expected by the server.
+- **Resolution:** The issue was resolved by updating the permissions of the private key file to `600` and ensuring the SSH key format was compatible with the server. Additionally, I re-added the key to the server's `~/.ssh/authorized_keys` file after regenerating it in the correct format.
 
 ## Corrective and Preventative Measures
 - **Improvements/Fixes:**
-  - Implement a more rigorous testing process for configuration changes, particularly those involving critical infrastructure like the load balancer.
-  - Enhance monitoring systems to detect and alert on uneven traffic distribution across servers more effectively.
-  - Establish a rollback plan for critical configuration changes to allow for quick reversion if issues arise.
+  - Regularly verify and update key file permissions to avoid similar issues in the future.
+  - Ensure SSH key formats are compatible between local machines and servers by following best practices for key generation and deployment.
+  - Implement automated checks to validate key permissions and formats before deployment to avoid manual errors.
 
 - **Tasks to Address the Issue:**
-  1. **Patch Nginx Server:** Review and update the Nginx configuration file to prevent similar routing issues in the future.
-  2. **Implement Load Testing:** Add a load-testing phase to the deployment pipeline to simulate traffic spikes and ensure configurations can handle the load.
-  3. **Enhance Monitoring:** Integrate additional monitoring for load balancer traffic distribution to catch any irregularities immediately.
-  4. **Documentation:** Update the deployment and configuration documentation to include detailed rollback procedures for critical infrastructure changes.
+  1. **Update Key Permissions:** Review and adjust the permissions of SSH key files to `600` to ensure proper security and accessibility.
+  2. **Verify Key Format:** Check and confirm the SSH key format matches server requirements and make necessary adjustments during key generation.
+  3. **Automate Key Checks:** Implement scripts or tools to automate the validation of SSH key permissions and formats before use.
+  4. **Document SSH Key Procedures:** Update documentation to include best practices for generating and deploying SSH keys to prevent similar issues in the future.
+
 
