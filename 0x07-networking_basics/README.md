@@ -64,5 +64,5 @@ Welcome to the Networking Basics project! This document outlines the tasks you n
 
 ---
 
-For more detailed information and to access the tasks, visit the [GitHub repository](https://github.com/username/alx-system_engineering-devops).
+
 
