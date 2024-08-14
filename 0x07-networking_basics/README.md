@@ -1,17 +1,6 @@
 # 🌐 Networking Basics #0 🚀
 
-Welcome to the Networking Basics project! This document outlines the tasks and requirements you need to complete.
-
-## 🛠️ Task Requirements
-
-- **Editors**: vi, vim, emacs
-- **Environment**: Ubuntu 20.04 LTS
-- **File Requirements**:
-  - End with a new line
-  - Bash scripts must be executable
-  - All Bash scripts must pass shellcheck without errors
-  - **First Line**: `#!/usr/bin/env bash`
-  - **Second Line**: A comment explaining what the script does
+Welcome to the Networking Basics project! This document outlines the tasks you need to complete.
 
 ## 📂 Tasks Overview
 
@@ -23,6 +12,8 @@ Welcome to the Networking Basics project! This document outlines the tasks and r
 
 **Description**: The OSI (Open Systems Interconnection) model is a conceptual framework used to understand network interactions in seven layers. This task focuses on the Transport and Network layers.
 
+---
+
 ### 1. Types of Network 🌐
 
 **Objective**: Differentiate between LAN, WAN, and Internet.
@@ -30,6 +21,8 @@ Welcome to the Networking Basics project! This document outlines the tasks and r
 - **File**: [1-types_of_network](1-types_of_network)
 
 **Description**: Learn about Local Area Networks (LAN), Wide Area Networks (WAN), and the Internet, including their typical usages and geographical sizes.
+
+---
 
 ### 2. MAC and IP Addresses 🏷️
 
@@ -39,6 +32,8 @@ Welcome to the Networking Basics project! This document outlines the tasks and r
 
 **Description**: Understand what MAC and IP addresses are, their functions, and their differences.
 
+---
+
 ### 3. UDP and TCP 📉📈
 
 **Objective**: Compare TCP and UDP protocols.
@@ -47,6 +42,8 @@ Welcome to the Networking Basics project! This document outlines the tasks and r
 
 **Description**: This task involves understanding the key differences between TCP and UDP, including their data transfer methods.
 
+---
+
 ### 4. TCP and UDP Ports 🔒
 
 **Objective**: Write a script to display listening ports.
@@ -54,6 +51,8 @@ Welcome to the Networking Basics project! This document outlines the tasks and r
 - **File**: [4-TCP_and_UDP_ports](4-TCP_and_UDP_ports)
 
 **Description**: Create a Bash script that shows listening sockets, including the PID and name of the program to which each socket belongs. The script should display listening ports and their associated processes.
+
+---
 
 ### 5. Is the Host on the Network? 📡
 
